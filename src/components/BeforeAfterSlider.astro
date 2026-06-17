@@ -1,0 +1,97 @@
+---
+import cleanImage from "../../assets/img/ar-limpo.png";
+import dirtyImage from "../../assets/img/ar-sujo.png";
+---
+
+<section id="antes-depois" class="section-anchor bg-page-soft py-20 sm:py-24" aria-labelledby="before-after-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+      <div>
+        <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">Antes e depois</p>
+        <h2 id="before-after-title" class="mt-4 text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+          Arraste para ver o impacto da limpeza.
+        </h2>
+        <p class="mt-5 text-lg font-semibold leading-8 text-muted">
+          O comparativo usa fotos reais do aparelho sujo e limpo. As imagens têm proporções diferentes, então o recorte usa enquadramento fixo para manter a comparação fluida.
+        </p>
+      </div>
+
+      <div class="rounded-[2.5rem] border border-border bg-panel p-4 shadow-soft">
+        <div class="relative overflow-hidden rounded-[2rem] bg-black" data-before-after>
+          <img
+            src={cleanImage.src}
+            width={cleanImage.width}
+            height={cleanImage.height}
+            alt="Ar-condicionado limpo depois da higienização"
+            class="aspect-[16/9] w-full object-cover"
+            loading="lazy"
+          />
+          <div class="before-after-overlay absolute inset-0" data-before-after-overlay>
+            <img
+              src={dirtyImage.src}
+              width={dirtyImage.width}
+              height={dirtyImage.height}
+              alt="Ar-condicionado sujo antes da higienização"
+              class="size-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class="pointer-events-none absolute inset-y-0 left-1/2 w-1 -translate-x-1/2 bg-white shadow-soft" data-before-after-handle></div>
+          <span
+            class="absolute left-4 top-4 rounded-full bg-black/78 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white transition-all duration-200 ease-out"
+            data-before-after-before-label
+          >
+            Antes
+          </span>
+          <span
+            class="absolute right-4 top-4 rounded-full bg-primary px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white transition-all duration-200 ease-out"
+            data-before-after-after-label
+          >
+            Depois
+          </span>
+          <input
+            class="absolute inset-x-4 bottom-5 h-2 cursor-ew-resize accent-primary"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Controlar comparação entre antes e depois da limpeza"
+            data-before-after-range
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const sliders = document.querySelectorAll("[data-before-after]");
+
+  for (const slider of sliders) {
+    const range = slider.querySelector<HTMLInputElement>("[data-before-after-range]");
+    const overlay = slider.querySelector<HTMLElement>("[data-before-after-overlay]");
+    const handle = slider.querySelector<HTMLElement>("[data-before-after-handle]");
+    const beforeLabel = slider.querySelector<HTMLElement>("[data-before-after-before-label]");
+    const afterLabel = slider.querySelector<HTMLElement>("[data-before-after-after-label]");
+
+    const fadeLabel = (label: HTMLElement | null, opacity: number) => {
+      if (!label) return;
+
+      label.style.opacity = String(opacity);
+      label.style.transform = `translateY(${(1 - opacity) * -0.5}rem)`;
+    };
+
+    const updateSlider = () => {
+      if (!range || !overlay || !handle) return;
+
+      const value = Number(range.value);
+      overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+      handle.style.left = `${value}%`;
+      fadeLabel(beforeLabel, Math.min(Math.max((value - 8) / 24, 0), 1));
+      fadeLabel(afterLabel, Math.min(Math.max((92 - value) / 24, 0), 1));
+    };
+
+    range?.addEventListener("input", updateSlider);
+    updateSlider();
+  }
+</script>

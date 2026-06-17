@@ -1,0 +1,62 @@
+---
+import { contact } from "../data/landing";
+
+type Props = {
+  submitLabel: string;
+};
+
+const { submitLabel } = Astro.props;
+---
+
+<form action={contact.mailchimpAction} method="post" class="space-y-4" aria-describedby="lead-form-help">
+  <p id="lead-form-help" class="text-sm leading-6 text-muted">
+    Informe seus dados para receber retorno. Se preferir agilidade, use o botão de WhatsApp.
+  </p>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="grid gap-2 text-sm font-bold text-ink" for="lead-name">
+      Nome
+      <input
+        id="lead-name"
+        class="min-h-12 rounded-2xl border border-border bg-page-soft px-4 text-base text-ink transition-colors duration-200 placeholder:text-muted focus:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary focus-visible:ring-2 focus-visible:ring-primary/45"
+        type="text"
+        name="NOME"
+        autocomplete="name"
+        placeholder="Seu nome…"
+      />
+    </label>
+    <label class="grid gap-2 text-sm font-bold text-ink" for="lead-phone">
+      Telefone
+      <input
+        id="lead-phone"
+        class="min-h-12 rounded-2xl border border-border bg-page-soft px-4 text-base text-ink transition-colors duration-200 placeholder:text-muted focus:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary focus-visible:ring-2 focus-visible:ring-primary/45"
+        type="tel"
+        inputmode="tel"
+        name="TELEFONE"
+        autocomplete="tel"
+        placeholder="(92) 99999-9999…"
+      />
+    </label>
+  </div>
+
+  <label class="grid gap-2 text-sm font-bold text-ink" for="lead-email">
+    Email
+    <input
+      id="lead-email"
+      class="min-h-12 rounded-2xl border border-border bg-page-soft px-4 text-base text-ink transition-colors duration-200 placeholder:text-muted focus:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary focus-visible:ring-2 focus-visible:ring-primary/45"
+      type="email"
+      name="EMAIL"
+      autocomplete="email"
+      spellcheck="false"
+      placeholder="voce@email.com…"
+    />
+  </label>
+
+  <button
+    type="submit"
+    name="subscribe"
+    class="w-full cursor-pointer rounded-2xl bg-accent px-6 py-4 text-base font-extrabold text-slate-950 shadow-lift transition-colors duration-200 hover:bg-accent-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+  >
+    {submitLabel}
+  </button>
+</form>

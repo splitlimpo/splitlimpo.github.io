@@ -1,0 +1,11 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mais conforto no uso</title>
+  <desc id="desc">Ícone minimalista de fluxo de ar com folha, representando conforto e ar mais agradável.</desc>
+  <rect x="8" y="8" width="80" height="80" rx="14" fill="#EEF3F5"/>
+  <path d="M23 37H53C59 37 59 28 53 28C49.8 28 47.6 30.1 47.1 32.5" stroke="#111318" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 50H65C72.5 50 72.5 39 65 39C61.4 39 58.8 41.3 58.2 44" stroke="#111318" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28 63H52C57.8 63 57.8 71.5 52 71.5C48.9 71.5 46.9 69.6 46.4 67.3" stroke="#111318" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M31 57H42" stroke="#111318" stroke-width="3" stroke-linecap="round"/>
+  <path d="M64.5 68.5C74.5 66.8 81 57 81 57C81 57 70.6 54.8 64.2 60.9C59.4 65.5 60.6 69.8 64.5 68.5Z" stroke="#FF3B5C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M64.5 68.5C68.5 65.2 72.3 62.6 77 60.5" stroke="#FF3B5C" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { variants } from "../data/landing";
+import BeforeAfterSlider from "./BeforeAfterSlider.astro";
+import FinPayBenefits from "./FinPayBenefits.astro";
+import FinPayCTA from "./FinPayCTA.astro";
+import FinPayHeader from "./FinPayHeader.astro";
+import FinPayHero from "./FinPayHero.astro";
+import Footer from "./Footer.astro";
+import PremiumTechnicalBrief from "./PremiumTechnicalBrief.astro";
+import WelthlyReviewSection from "./WelthlyReviewSection.astro";
+import WhatsAppCTA from "./WhatsAppCTA.astro";
+import WishpayFAQSection from "./WishpayFAQSection.astro";
+
+type Props = {
+  canonicalPath?: string;
+};
+
+const { canonicalPath = variants.finpay.path } = Astro.props;
+const content = variants.finpay;
+---
+
+<BaseLayout title={content.title} description={content.description} variant="finpay" canonicalPath={canonicalPath}>
+  <FinPayHeader />
+  <main id="conteudo">
+    <FinPayHero />
+    <FinPayBenefits />
+    <BeforeAfterSlider />
+    <PremiumTechnicalBrief />
+    <WelthlyReviewSection />
+    <WishpayFAQSection />
+    <FinPayCTA />
+  </main>
+  <Footer />
+  <WhatsAppCTA />
+</BaseLayout>

@@ -1,0 +1,13 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sem desmontagem desnecessária</title>
+  <desc id="desc">Ícone minimalista de ar-condicionado com ferramenta, representando manutenção técnica no local.</desc>
+  <rect x="8" y="8" width="80" height="80" rx="14" fill="#EEF3F5"/>
+  <rect x="21" y="29" width="54" height="27" rx="5" stroke="#111318" stroke-width="3"/>
+  <path d="M26 44H70" stroke="#111318" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M34 57V63" stroke="#111318" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M47 57V64" stroke="#111318" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M60 57V63" stroke="#111318" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M64 35H70" stroke="#FF3B5C" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M73 51.5C76.8 55.3 76.8 61.4 73 65.2C70.5 67.7 67 68.5 63.9 67.7L50.3 81.3C49.1 82.5 47.2 82.5 46 81.3L42.7 78C41.5 76.8 41.5 74.9 42.7 73.7L56.3 60.1C55.5 57 56.3 53.5 58.8 51C62.6 47.2 68.7 47.2 72.5 51" stroke="#FF3B5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M62.5 55L68.8 61.3" stroke="#FF3B5C" stroke-width="3" stroke-linecap="round"/>
+</svg>

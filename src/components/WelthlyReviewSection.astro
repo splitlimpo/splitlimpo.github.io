@@ -1,0 +1,57 @@
+---
+import { contact, shared } from "../data/landing";
+
+const getInitials = (name: string) =>
+  name
+    .split(" ")
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+---
+
+<section id="avaliacoes" class="section-anchor bg-page py-20 sm:py-24" aria-labelledby="review-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">Avaliações</p>
+      <h2 id="review-title" class="mt-4 text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+        Clientes que confiaram na Split Limpo.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.45fr]">
+      <article class="rounded-[2rem] border border-primary/18 bg-[#fff8f9] p-7 text-ink shadow-soft">
+        <p class="text-sm font-black uppercase tracking-[0.2em] text-primary">Google Business Profile</p>
+        <p class="mt-8 font-display text-7xl font-black leading-none">{shared.rating}</p>
+        <p class="mt-4 text-lg font-black">{shared.reviewCount} avaliações públicas</p>
+        <p class="mt-5 text-sm font-semibold leading-6 text-muted">
+          Nota e relatos usados como prova social, com link direto para conferir as avaliações públicas no Google.
+        </p>
+        <a
+          href={contact.googleProfileUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="mt-8 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-black text-white shadow-lift transition-colors duration-200 hover:bg-primary-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          Ver avaliações no Google
+        </a>
+      </article>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {shared.finPayReviews.map((review) => (
+          <article class="rounded-[2rem] border border-border bg-panel p-6 shadow-lift">
+            <p class="text-[#fbbc04]" aria-label="5 estrelas">★★★★★ <span class="sr-only">5 estrelas</span></p>
+            <blockquote class="mt-5 text-base font-bold leading-7 text-ink">“{review.quote}”</blockquote>
+            <div class="mt-6 flex items-center gap-3">
+              <div class="grid size-10 place-items-center rounded-full bg-page-soft text-sm font-black text-primary">{getInitials(review.name)}</div>
+              <div>
+                <p class="text-sm font-black text-ink">{review.name}</p>
+                <p class="text-xs font-bold text-muted">{review.role}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

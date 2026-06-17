@@ -1,0 +1,30 @@
+---
+import { shared } from "../data/landing";
+---
+
+<section id="faq" class="section-anchor bg-page py-20 sm:py-24">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.78fr_1.22fr] lg:px-8">
+    <div>
+      <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">FAQ</p>
+      <h2 class="mt-4 text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+        Perguntas frequentes antes de chamar.
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {shared.faqs.map((item) => (
+        <details class="group rounded-[1.75rem] border border-border bg-panel p-6 shadow-lift">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-black tracking-tight text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            {item.question}
+            <span class="grid size-9 shrink-0 place-items-center rounded-full bg-page-soft text-primary transition-transform duration-200 group-open:rotate-45">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="M12 5v14M5 12h14"></path>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-base font-medium leading-7 text-muted">{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

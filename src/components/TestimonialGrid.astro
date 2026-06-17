@@ -1,0 +1,37 @@
+---
+import review1 from "../../assets/img/Screen Shot 2021-10-26 at 09.07.19.png";
+import review2 from "../../assets/img/Screen Shot 2021-10-26 at 09.08.46.png";
+import review3 from "../../assets/img/Screen Shot 2021-10-26 at 09.09.09.png";
+import review4 from "../../assets/img/Screen Shot 2021-10-26 at 09.10.19.png";
+
+const reviews = [review1, review2, review3, review4];
+---
+
+<section id="depoimentos" class="section-anchor bg-page-soft py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">Clientes</p>
+      <h2 class="mt-4 text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+        Prova social reaproveitada da landing atual, agora em um bloco mais limpo.
+      </h2>
+      <p class="mt-5 text-lg font-medium leading-8 text-muted">
+        Os depoimentos originais ainda estão em formato de imagem. A próxima melhoria é transformar esse material em texto revisado e acessível.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2">
+      {reviews.map((review, index) => (
+        <figure class="overflow-hidden rounded-[2rem] border border-border bg-panel p-3 shadow-lift">
+          <img
+            src={review.src}
+            width={review.width}
+            height={review.height}
+            alt={`Depoimento de cliente da Split Limpo em rede social ${index + 1}`}
+            loading="lazy"
+            class="w-full rounded-[1.5rem] object-cover"
+          />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

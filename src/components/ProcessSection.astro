@@ -1,0 +1,43 @@
+---
+import { shared } from "../data/landing";
+---
+
+<section id="processo" class="section-anchor bg-page-soft py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">Como funciona</p>
+      <h2 class="mt-4 text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+        Limpeza no local, com uma sequência simples de entender.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-3">
+      {shared.process.map((step, index) => (
+        <article class="relative overflow-hidden rounded-[2rem] border border-border bg-panel p-7 shadow-soft">
+          <span class="absolute right-6 top-5 font-display text-7xl font-black leading-none text-primary/14">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div class="relative">
+            <div class="mb-8 grid size-14 place-items-center rounded-3xl bg-accent text-lg font-black text-slate-950 shadow-lift">
+              {index + 1}
+            </div>
+            <h3 class="font-display text-2xl font-black tracking-tight text-ink">{step.title}</h3>
+            <p class="mt-4 text-base font-medium leading-7 text-muted">{step.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-8 rounded-[2rem] border border-border bg-panel/72 p-6 shadow-lift md:flex md:items-center md:justify-between md:gap-6">
+      <p class="text-base font-bold leading-7 text-muted">
+        Quer ver a técnica em ação? Temos um vídeo demonstrando a limpeza Jet Split usada como referência pela página antiga.
+      </p>
+      <a
+        href={shared.youtubeUrl}
+        class="mt-5 inline-flex rounded-full border border-primary px-6 py-3 text-sm font-extrabold text-primary transition-colors duration-200 hover:bg-primary hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:mt-0"
+      >
+        Assistir vídeo
+      </a>
+    </div>
+  </div>
+</section>

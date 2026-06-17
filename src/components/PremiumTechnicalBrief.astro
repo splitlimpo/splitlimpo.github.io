@@ -1,0 +1,46 @@
+---
+import { shared } from "../data/landing";
+---
+
+<section class="bg-page py-20 sm:py-24" aria-labelledby="premium-brief-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
+      <div class="rounded-[2.25rem] border border-border bg-panel p-8 shadow-soft lg:p-10">
+        <p class="text-sm font-extrabold uppercase tracking-[0.22em] text-primary">Leitura técnica</p>
+        <h2 id="premium-brief-title" class="mt-4 text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+          Antes de vender limpeza, mostramos o que será protegido.
+        </h2>
+        <p class="mt-6 text-lg font-medium leading-8 text-muted">
+          A versão premium posiciona a Split Limpo como serviço técnico: menos pressa visual, mais método, mais controle e mais segurança na decisão.
+        </p>
+      </div>
+
+      <div class="rounded-[2.25rem] border border-primary/30 bg-gradient-to-br from-panel via-panel to-primary/10 p-6 shadow-soft lg:p-8">
+        <div class="grid gap-4 md:grid-cols-3">
+          {shared.process.map((step, index) => (
+            <article class="rounded-[1.75rem] border border-border bg-page/58 p-5">
+              <span class="font-display text-4xl font-black text-primary/70">0{index + 1}</span>
+              <h3 class="mt-8 font-display text-xl font-black tracking-tight text-ink">{step.title}</h3>
+              <p class="mt-3 text-sm font-semibold leading-6 text-muted">{step.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-6 grid gap-4 rounded-[1.75rem] border border-border bg-page/60 p-5 md:grid-cols-3">
+          <div>
+            <p class="text-3xl font-black text-accent">1h-1h30</p>
+            <p class="mt-1 text-xs font-extrabold uppercase tracking-[0.16em] text-muted">tempo médio</p>
+          </div>
+          <div>
+            <p class="text-3xl font-black text-accent">0</p>
+            <p class="mt-1 text-xs font-extrabold uppercase tracking-[0.16em] text-muted">remoção da parede</p>
+          </div>
+          <div>
+            <p class="text-3xl font-black text-accent">3</p>
+            <p class="mt-1 text-xs font-extrabold uppercase tracking-[0.16em] text-muted">etapas visíveis</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

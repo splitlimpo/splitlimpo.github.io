@@ -1,0 +1,62 @@
+---
+import heroImage from "../../assets/img/ar2.jpg";
+import { contact, shared, variants } from "../data/landing";
+
+const content = variants.popular;
+---
+
+<section class="relative overflow-hidden bg-page">
+  <div class="absolute inset-0 mesh-popular"></div>
+  <div class="absolute -right-24 top-20 size-72 rounded-full bg-accent/25 blur-3xl"></div>
+  <div class="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+    <div class="mb-8 rounded-full border border-border bg-panel px-4 py-3 text-center text-sm font-black text-ink shadow-lift sm:inline-flex">
+      Atendimento por WhatsApp em Manaus e região
+    </div>
+
+    <div class="grid items-center gap-8 lg:grid-cols-[1.18fr_0.82fr]">
+      <div>
+        <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">{content.eyebrow}</p>
+        <h1 class="mt-4 max-w-4xl text-balance font-display text-5xl font-black leading-[0.92] tracking-[-0.06em] text-ink sm:text-7xl lg:text-8xl">
+          {content.heroTitle}
+        </h1>
+        <p class="mt-6 max-w-2xl text-xl font-bold leading-8 text-muted">
+          {content.heroLead}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={contact.whatsappHref}
+            class="inline-flex items-center justify-center rounded-full bg-accent px-8 py-5 text-lg font-black text-slate-950 shadow-soft transition-colors duration-200 hover:bg-accent-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            Chamar no WhatsApp agora
+          </a>
+          <a
+            href={contact.phoneHref}
+            class="inline-flex items-center justify-center rounded-full border-2 border-primary bg-panel px-8 py-5 text-lg font-black text-primary transition-colors duration-200 hover:bg-primary hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            Ligar {contact.phoneDisplay}
+          </a>
+        </div>
+      </div>
+
+      <aside class="relative rounded-[2.5rem] border border-border bg-panel p-4 shadow-soft sm:p-5">
+        <img
+          src={heroImage.src}
+          width={heroImage.width}
+          height={heroImage.height}
+          alt="Limpeza de ar-condicionado split realizada no local"
+          class="aspect-[5/4] w-full rounded-[2rem] object-cover"
+          fetchpriority="high"
+        />
+        <div class="mt-4 rounded-[2rem] bg-accent p-5 text-slate-950">
+          <p class="font-display text-3xl font-black tracking-tight">3 sinais para chamar hoje</p>
+          <ul class="mt-4 grid gap-3 text-sm font-black">
+            {shared.pains.slice(0, 3).map((pain) => (
+              <li class="rounded-full bg-white/70 px-4 py-3">{pain}</li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

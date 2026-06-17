@@ -1,0 +1,59 @@
+---
+import type { LandingVariant } from "../data/landing";
+import { variants } from "../data/landing";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AssetPlaceholderGrid from "./AssetPlaceholderGrid.astro";
+import BenefitsGrid from "./BenefitsGrid.astro";
+import CTASection from "./CTASection.astro";
+import FAQSection from "./FAQSection.astro";
+import Footer from "./Footer.astro";
+import GoogleProofSection from "./GoogleProofSection.astro";
+import Header from "./Header.astro";
+import Hero from "./Hero.astro";
+import PopularHero from "./PopularHero.astro";
+import PopularWhatsAppFlow from "./PopularWhatsAppFlow.astro";
+import PremiumTechnicalBrief from "./PremiumTechnicalBrief.astro";
+import ProblemSection from "./ProblemSection.astro";
+import TestimonialGrid from "./TestimonialGrid.astro";
+import TrustBar from "./TrustBar.astro";
+import WhatsAppCTA from "./WhatsAppCTA.astro";
+
+type Props = {
+  variant: LandingVariant;
+};
+
+const { variant } = Astro.props;
+const content = variants[variant];
+const isPremium = variant === "premium";
+---
+
+<BaseLayout title={content.title} description={content.description} variant={variant} canonicalPath={content.path}>
+  <Header />
+  <main id="conteudo">
+    {isPremium ? (
+      <>
+        <Hero variant={variant} />
+        <GoogleProofSection />
+        <PremiumTechnicalBrief />
+        <AssetPlaceholderGrid />
+        <BenefitsGrid variant={variant} />
+        <TestimonialGrid />
+        <FAQSection />
+        <CTASection variant={variant} />
+      </>
+    ) : (
+      <>
+        <PopularHero />
+        <PopularWhatsAppFlow />
+        <ProblemSection />
+        <TrustBar variant={variant} />
+        <BenefitsGrid variant={variant} />
+        <TestimonialGrid />
+        <FAQSection />
+        <CTASection variant={variant} />
+      </>
+    )}
+  </main>
+  <Footer />
+  <WhatsAppCTA />
+</BaseLayout>

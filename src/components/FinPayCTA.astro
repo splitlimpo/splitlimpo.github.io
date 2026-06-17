@@ -1,0 +1,25 @@
+---
+import { contact, variants } from "../data/landing";
+
+const content = variants.finpay;
+---
+
+<section class="bg-page px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl rounded-[2.5rem] border border-border bg-[linear-gradient(135deg,#ffffff_0%,#fff8f9_52%,#eef5f6_100%)] p-8 text-ink shadow-soft sm:p-12">
+    <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div>
+        <p class="text-sm font-black uppercase tracking-[0.2em] text-primary">Próximo passo</p>
+        <h2 class="mt-4 max-w-2xl text-balance font-display text-3xl font-black tracking-[-0.04em] sm:text-5xl">
+          {content.finalTitle}
+        </h2>
+        <p class="mt-4 max-w-xl text-base font-semibold leading-7 text-muted">{content.finalLead}</p>
+      </div>
+      <a
+        href={contact.whatsappHref}
+        class="inline-flex justify-center rounded-full bg-primary px-8 py-5 text-base font-black text-white transition-colors duration-200 hover:bg-primary-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      >
+        Pedir orçamento
+      </a>
+    </div>
+  </div>
+</section>

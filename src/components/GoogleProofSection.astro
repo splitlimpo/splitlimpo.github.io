@@ -1,0 +1,57 @@
+---
+import { contact, shared } from "../data/landing";
+---
+
+<section id="avaliacoes" class="section-anchor bg-page py-20 sm:py-24" aria-labelledby="google-proof-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="overflow-hidden rounded-[2.5rem] border border-border bg-panel shadow-soft">
+      <div class="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="bg-primary p-8 text-slate-950 sm:p-10 lg:p-12">
+          <p class="text-sm font-black uppercase tracking-[0.2em]">Prova externa</p>
+          <h2 id="google-proof-title" class="mt-4 text-balance font-display text-4xl font-black tracking-[-0.05em] sm:text-6xl">
+            {shared.rating} estrelas no Google, com {shared.reviewCount} avaliações.
+          </h2>
+          <p class="mt-6 text-lg font-bold leading-8 text-slate-900">
+            Esse bloco usa o perfil público da Split Limpo como principal prova de confiança enquanto os novos depoimentos em texto e fotos reais são produzidos.
+          </p>
+        </div>
+
+        <div class="grid content-between gap-8 p-8 sm:p-10 lg:p-12">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="rounded-[2rem] border border-border bg-page-soft p-6">
+              <p class="text-sm font-extrabold uppercase tracking-[0.18em] text-primary">Google</p>
+              <p class="mt-4 font-display text-4xl font-black text-ink">{shared.rating}/5.0</p>
+              <p class="mt-2 text-sm font-semibold leading-6 text-muted">Perfil com fotos, endereço, telefone e avaliações públicas.</p>
+            </article>
+            <article class="rounded-[2rem] border border-border bg-page-soft p-6">
+              <p class="text-sm font-extrabold uppercase tracking-[0.18em] text-primary">Instagram</p>
+              <p class="mt-4 font-display text-4xl font-black text-ink">Serviços reais</p>
+              <p class="mt-2 text-sm font-semibold leading-6 text-muted">Canal para bastidores, reels, antes/depois e prova visual futura.</p>
+            </article>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={contact.googleProfileUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center justify-center rounded-full bg-accent px-7 py-4 text-base font-extrabold text-slate-950 shadow-lift transition-colors duration-200 hover:bg-accent-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            >
+              Ver avaliações no Google
+            </a>
+            <a
+              href={contact.instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center justify-center rounded-full border border-border px-7 py-4 text-base font-extrabold text-ink transition-colors duration-200 hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            >
+              Ver Instagram
+            </a>
+          </div>
+
+          <p class="text-sm font-semibold leading-6 text-muted">{contact.address}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Split Limpo V2 | Prévia FinPay"
+  description="Prévia da nova landing page da Split Limpo no estilo FinPay, com tema claro e cores da marca."
+  variant="finpay"
+  canonicalPath="/v2/"
+>
+  <main id="conteudo" class="mesh-finpay min-h-screen px-4 py-16 sm:px-6 lg:px-8">
+    <section class="mx-auto flex min-h-[calc(100svh-8rem)] max-w-5xl flex-col justify-center">
+      <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">Split Limpo V2</p>
+      <h1 class="mt-4 max-w-4xl text-balance font-display text-4xl font-black tracking-[-0.05em] text-ink sm:text-6xl">
+        A nova prévia segue o layout claro do FinPay.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg font-medium leading-8 text-muted">
+        Ela usa o hero novo, seção de antes/depois com slider, reviews inspirados na Welthly e FAQ inspirado na Wishpay.
+      </p>
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        <a
+          href="/v2/fin-pay/"
+          class="rounded-[2rem] border border-border bg-panel p-7 shadow-soft transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          <span class="text-sm font-extrabold uppercase tracking-[0.18em] text-primary">Versão principal</span>
+          <strong class="mt-4 block font-display text-3xl font-black tracking-tight text-ink">Abrir FinPay style.</strong>
+        </a>
+        <a
+          href="/v2/premium/"
+          class="rounded-[2rem] border border-border bg-panel p-7 shadow-soft transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          <span class="text-sm font-extrabold uppercase tracking-[0.18em] text-primary">Alternativa</span>
+          <strong class="mt-4 block font-display text-3xl font-black tracking-tight text-ink">Premium escura.</strong>
+        </a>
+        <a
+          href="/v2/popular/"
+          class="rounded-[2rem] border border-border bg-panel p-7 shadow-soft transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          <span class="text-sm font-extrabold uppercase tracking-[0.18em] text-primary">Rota arquivada</span>
+          <strong class="mt-4 block font-display text-3xl font-black tracking-tight text-ink">Ver popular antiga.</strong>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

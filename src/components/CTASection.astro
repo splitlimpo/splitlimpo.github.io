@@ -1,0 +1,35 @@
+---
+import type { LandingVariant } from "../data/landing";
+import { contact, variants } from "../data/landing";
+
+type Props = {
+  variant: LandingVariant;
+};
+
+const { variant } = Astro.props;
+const content = variants[variant];
+---
+
+<section class="bg-page-soft px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+  <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-border bg-panel p-8 text-center shadow-soft sm:p-12">
+    <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-primary">Próximo passo</p>
+    <h2 class="mx-auto mt-4 max-w-3xl text-balance font-display text-3xl font-black tracking-[-0.04em] text-ink sm:text-5xl">
+      {content.finalTitle}
+    </h2>
+    <p class="mx-auto mt-5 max-w-2xl text-lg font-medium leading-8 text-muted">{content.finalLead}</p>
+    <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+      <a
+        href={contact.whatsappHref}
+        class="inline-flex items-center justify-center rounded-full bg-accent px-7 py-4 text-base font-extrabold text-slate-950 shadow-lift transition-colors duration-200 hover:bg-accent-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        {content.primaryCta}
+      </a>
+      <a
+        href={contact.phoneHref}
+        class="inline-flex items-center justify-center rounded-full border border-border px-7 py-4 text-base font-extrabold text-ink transition-colors duration-200 hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        Ligar para {contact.phoneDisplay}
+      </a>
+    </div>
+  </div>
+</section>

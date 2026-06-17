@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import type { LandingVariant } from "../data/landing";
+
+type Props = {
+  title: string;
+  description: string;
+  variant: LandingVariant;
+  canonicalPath: string;
+};
+
+const { title, description, variant, canonicalPath } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site ?? "https://splitlimpo.com.br");
+const themeColor = variant === "premium" ? "#09090a" : "#f4f7f8";
+---
+
+<!doctype html>
+<html lang="pt-BR" data-variant={variant}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content={themeColor} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical.toString()} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.toString()} />
+    <meta property="og:site_name" content="Split Limpo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Nunito+Sans:wght@700;800;900&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen overflow-x-hidden bg-page text-ink antialiased">
+    <a
+      href="#conteudo"
+      class="skip-link rounded-full bg-accent px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lift transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      Pular para o conteúdo
+    </a>
+    <slot />
+  </body>
+</html>
