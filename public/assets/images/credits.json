@@ -1,0 +1,105 @@
+[
+  {
+    "file": "hero-split.webp",
+    "source": "/Users/diegocoutinho/dev/splitlimpo.github.io/assets/img/hero-3.png",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Composição visual da abertura, reutilizada da versão atual",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "file": "limpeza-no-local.webp",
+    "source": "/Users/diegocoutinho/dev/splitlimpo.github.io/assets/img/ar2.jpg",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Imagem do serviço, reutilizada da página original",
+    "width": 1152,
+    "height": 864
+  },
+  {
+    "file": "antes-da-limpeza.webp",
+    "source": "/Users/diegocoutinho/dev/splitlimpo.github.io/assets/img/ar-sujo.png",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Registro de antes da limpeza, reutilizado da versão atual",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "file": "depois-da-limpeza.webp",
+    "source": "/Users/diegocoutinho/dev/splitlimpo.github.io/assets/img/ar-limpo.png",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Registro de depois da limpeza, reutilizado da versão atual",
+    "width": 680,
+    "height": 383
+  },
+  {
+    "file": "split-limpo-marca.webp",
+    "source": "/Users/diegocoutinho/Library/Application Support/Open Design/namespaces/release-stable/data/od-next-run-inputs/odnext_7b4a48ad7b204953826a0e1d1ce15bad/c3ad7dab-ba45-422c-9940-d4f171d7d5e0/attachments/attachment-001.jpg",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Logotipo da marca extraído da captura fornecida pelo usuário, sem recriação",
+    "width": 623,
+    "height": 275,
+    "source_crop": [
+      62,
+      620,
+      685,
+      895
+    ]
+  },
+  {
+    "file": "equipe-split-limpo.webp",
+    "source": "/Users/diegocoutinho/Library/Application Support/Open Design/namespaces/release-stable/data/od-next-run-inputs/odnext_7b4a48ad7b204953826a0e1d1ce15bad/c3ad7dab-ba45-422c-9940-d4f171d7d5e0/attachments/attachment-002.png",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Foto real da equipe enviada pelo usuário, com enquadramento completo",
+    "width": 899,
+    "height": 1599
+  },
+  {
+    "file": "ar-condicionado-quatro-legendas.webp",
+    "source": "/Users/diegocoutinho/dev/splitlimpo.github.io/assets/img/hero-splitlimpo-background-cards.png",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Composição com quatro legendas, editada para manter os textos dentro dos quadros brancos",
+    "width": 1356,
+    "height": 1159,
+    "source_crop": [
+      688,
+      40,
+      1624,
+      840
+    ],
+    "edit": {
+      "tool": "Codex imagegen — ferramenta integrada",
+      "generated_source": "/Users/diegocoutinho/.codex/generated_images/01a1ca51-4923-7ab0-bced-57a6f60b4f6c/exec-45ee3075-ded9-49f0-bbad-b07e4e2742aa.png",
+      "prompt": "Use case: text-localization (layout correction only; retain the Portuguese language).\nAsset type: existing landing-page hero image, edited in place.\nEdit the attached image ONLY to fix the four white annotation cards. All text must fit comfortably INSIDE its own white card. The existing top-left and top-right headlines overflow their white boundaries; the bottom-left headline also needs a comfortable right margin. Correct ALL FOUR cards, not only one.\nPreserve the SAME air-conditioning unit, full unit silhouette, perspective, vents, light, soft light-gray technical background, red outline icons, four-card arrangement, and restrained existing visual style. Do not redesign or replace the appliance. Keep the whole composition visible at the original aspect ratio 936:800. Output a sharp image; 1872 by 1600 is a suitable high-resolution canvas.\nFor each card: use a dedicated narrow icon column and a distinct text column; keep generous internal padding of at least 24 pixels at the original 936px canvas scale, including to the RIGHT of the longest line. Enlarge a white card slightly when necessary, intelligently wrap titles onto two or three shorter lines, and adjust typography consistently. No text or icon may touch or extend beyond a white card. Do not hide, truncate, clip or remove words. Avoid overlapping the air conditioner. Use clear, accurate Portuguese lettering, bold dark charcoal titles and smaller legible dark-gray descriptions. All four cards must have complete white backgrounds behind ALL their text.\nExact copy to retain, with line breaks allowed as needed:\nTOP LEFT title: 'Tecnologia Jet Split: Limpeza Profunda'. Body: 'Limpeza profunda diretamente no local.'\nTOP RIGHT title: 'Padrão Europeu: Higienização Completa'. Body: 'Higienização completa com alto padrão.'\nBOTTOM LEFT title: 'Economia Garantida: Eficiência Energética'. Body: 'Economia garantida. Eficiência energética.'\nBOTTOM RIGHT title: 'Economia Garantida: Eficiência Energética'. Body: 'Mais eficiência e menor consumo de energia.'\nConstraints: keep exactly FOUR annotation cards; retain all existing words and accents verbatim; no new claims, no added logo, no watermarks, no extra text. Change only card typography/layout and the minimum white-card geometry needed to contain all text."
+    }
+  },
+  {
+    "file": "equipe-split-limpo-placa-desfocada.webp",
+    "source": "assets/images/equipe-split-limpo.webp",
+    "author": null,
+    "license": "Fotografia fornecida pelo usuário; licença não especificada",
+    "use": "Atendimento externo, com a placa do veículo desfocada para preservar a identificação",
+    "width": 940,
+    "height": 1672,
+    "edit": {
+      "tool": "Codex imagegen — ferramenta integrada",
+      "generated_source": "/Users/diegocoutinho/.codex/generated_images/01a1ca51-4923-7ab0-bced-57a6f60b4f6c/exec-80fb2924-46f6-41e8-8072-1c41b6183087.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: existing real documentary photograph used in a business landing page.\nEdit ONLY the visible car license plate near the LOWER LEFT of this portrait photo. The source is 899 x 1599 pixels; the plate is roughly x=35..140, y=1270..1310 (about 4%..16% from the left and 79%..82% from the top), on the front bumper of the white car behind the worker. Apply a STRONG localized Gaussian-style blur to the ENTIRE license plate and its characters so that no letters or numbers can be read. Keep the blur natural and restricted to the plate itself; do not blur the worker or the whole vehicle. Do not replace the plate with a new number.\nSTRICT INVARIANTS: preserve the original real worker and his exact identity, posture, face, hands, red cap, red company uniform, all uniform lettering and logos; preserve the original car, badge, air-conditioning unit, building, window, roof, outdoor scene, lighting, colors, framing and photographic texture. Do not reconstruct, beautify, stylize, reposition, add, remove, or alter any other content. Keep the full original portrait image and its aspect ratio 899:1599. This is a tiny privacy edit, not a new scene. Only blur the existing license plate."
+    }
+  },
+  {
+    "file": "split-limpo-logo.png",
+    "source": "/Users/diegocoutinho/Library/Application Support/Open Design/namespaces/release-stable/data/od-next-run-inputs/odnext_f8c51a390cd74e539a2656ea7fad440e/69477b80-f569-4ed0-8a07-f58e67d40f15/attachments/attachment-001.png",
+    "author": null,
+    "license": "Asset fornecido pelo usuário; licença não especificada",
+    "use": "Logotipo original enviado pelo usuário, aplicado no cabeçalho e no rodapé com transparência preservada",
+    "width": 1886,
+    "height": 834
+  }
+]
