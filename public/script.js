@@ -181,3 +181,201 @@ for (const carousel of document.querySelectorAll("[data-team-carousel]")) {
   showSlide(0);
   scheduleRotation();
 }
+
+// Native scrolling keeps touch navigation and all reviews available without JS.
+for (const carousel of document.querySelectorAll("[data-reviews-carousel]")) {
+  const viewport = carousel.querySelector("[data-reviews-viewport]");
+  const cards = Array.from(carousel.querySelectorAll(".review-card"));
+  const controls = carousel.querySelector("[data-reviews-controls]");
+  const toggle = carousel.querySelector("[data-reviews-toggle]");
+  const previous = carousel.querySelector("[data-reviews-previous]");
+  const next = carousel.querySelector("[data-reviews-next]");
+  const count = carousel.querySelector("[data-reviews-count]");
+  const status = carousel.querySelector("[data-reviews-status]");
+  const pauseIcon = carousel.querySelector("[data-reviews-pause]");
+  const playIcon = carousel.querySelector("[data-reviews-play]");
+  if (!viewport || cards.length < 2 || !controls || !toggle || !previous || !next || !count || !status || !pauseIcon || !playIcon) continue;
+
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let index = 0;
+  let rotationEnabled = !motionPreference.matches;
+  let focusPaused = false;
+  let hoverPaused = false;
+  let pointerPaused = false;
+  let inView = false;
+  let timer = null;
+  let scrollTarget = null;
+  let viewportWidth = 0;
+  let cloneCount = 0;
+  const navigationQueue = [];
+
+  function visibleCount() {
+    return Number(getComputedStyle(carousel).getPropertyValue("--reviews-per-view"));
+  }
+
+  function wrapIndex(position) {
+    return ((position % cards.length) + cards.length) % cards.length;
+  }
+
+  function cardOffset(position) {
+    const card = viewport.children[cloneCount + position];
+    return card.getBoundingClientRect().left - viewport.firstElementChild.getBoundingClientRect().left;
+  }
+
+  function scrollPosition() {
+    const step = cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+    return Math.round((viewport.scrollLeft - cardOffset(0)) / step);
+  }
+
+  function updateCount(announce = false) {
+    const positions = Array.from({ length: Math.min(visibleCount(), cards.length) }, (_, offset) => wrapIndex(index + offset) + 1);
+    const first = positions[0];
+    const end = positions[positions.length - 1];
+    const range = positions.length === 1 ? first : end > first ? `${first}–${end}` : positions.join(" · ");
+    count.textContent = `${range} de ${cards.length}`;
+    if (announce) status.textContent = `Avaliações: ${count.textContent}`;
+  }
+
+  function scheduleRotation() {
+    window.clearTimeout(timer);
+    if (!rotationEnabled || focusPaused || hoverPaused || pointerPaused || scrollTarget !== null || document.hidden || !inView || cards.length <= visibleCount()) return;
+    timer = window.setTimeout(() => showReview(index + 1), 6500);
+  }
+
+  function showReview(requestedIndex, announce = false, behavior = motionPreference.matches ? "instant" : "smooth") {
+    // Adjacent navigation may land on a visual copy at either end of the track.
+    // Once scrolling ends, the identical original replaces it without animation.
+    const destination = cardOffset(requestedIndex);
+    index = wrapIndex(requestedIndex);
+    scrollTarget = Math.abs(viewport.scrollLeft - destination) > 1 ? destination : null;
+    viewport.scrollTo({ left: destination, behavior });
+    updateCount(announce);
+    scheduleRotation();
+  }
+
+  function navigate(action) {
+    navigationQueue.push(action);
+    runNextNavigation();
+  }
+
+  function runNextNavigation() {
+    while (scrollTarget === null && navigationQueue.length > 0) {
+      const action = navigationQueue.shift();
+      action();
+    }
+  }
+
+  function finishScroll() {
+    // A reset can emit its own scrollend while the next queued move has started.
+    if (scrollTarget !== null && Math.abs(viewport.scrollLeft - scrollTarget) > 1) return;
+    scrollTarget = null;
+    const position = scrollPosition();
+    index = wrapIndex(position);
+    if (position !== index) viewport.scrollTo({ left: cardOffset(index), behavior: "instant" });
+    updateCount();
+    runNextNavigation();
+    scheduleRotation();
+  }
+
+  function rebuildLoop() {
+    if (viewport.clientWidth === viewportWidth) return;
+    viewportWidth = viewport.clientWidth;
+    scrollTarget = null;
+    navigationQueue.length = 0;
+    for (const clone of viewport.querySelectorAll("[data-review-clone]")) clone.remove();
+    cloneCount = Math.min(visibleCount(), cards.length);
+
+    function copyCard(card) {
+      const clone = card.cloneNode(true);
+      clone.dataset.reviewClone = "";
+      clone.setAttribute("aria-hidden", "true");
+      clone.removeAttribute("aria-label");
+      clone.inert = true;
+      return clone;
+    }
+
+    viewport.prepend(...cards.slice(-cloneCount).map(copyCard));
+    viewport.append(...cards.slice(0, cloneCount).map(copyCard));
+    viewport.scrollTo({ left: cardOffset(index), behavior: "instant" });
+    updateCount();
+    scheduleRotation();
+  }
+
+  function updateToggle() {
+    toggle.setAttribute("aria-label", rotationEnabled ? "Pausar rotação automática" : "Iniciar rotação automática");
+    pauseIcon.hidden = !rotationEnabled;
+    playIcon.hidden = rotationEnabled;
+    scheduleRotation();
+  }
+
+  previous.addEventListener("click", () => navigate(() => showReview(index - 1, true)));
+  next.addEventListener("click", () => navigate(() => showReview(index + 1, true)));
+  toggle.addEventListener("click", () => {
+    rotationEnabled = !rotationEnabled;
+    // An explicit play action also resumes rotation after keyboard navigation.
+    if (rotationEnabled) focusPaused = false;
+    updateToggle();
+  });
+
+  viewport.addEventListener("keydown", (event) => {
+    const destinations = {
+      ArrowLeft: () => showReview(index - 1, true),
+      ArrowRight: () => showReview(index + 1, true),
+      Home: () => showReview(0, true),
+      End: () => showReview(cards.length - 1, true),
+    };
+    if (!(event.key in destinations)) return;
+    event.preventDefault();
+    navigate(destinations[event.key]);
+  });
+  viewport.addEventListener("scroll", () => {
+    if (scrollTarget === null) {
+      index = wrapIndex(scrollPosition());
+      updateCount();
+    }
+    scheduleRotation();
+  }, { passive: true });
+  viewport.addEventListener("scrollend", finishScroll);
+
+  function interruptNavigation() {
+    scrollTarget = null;
+    navigationQueue.length = 0;
+    scheduleRotation();
+  }
+
+  viewport.addEventListener("wheel", interruptNavigation, { passive: true });
+  viewport.addEventListener("pointerdown", () => {
+    pointerPaused = true;
+    interruptNavigation();
+  });
+  function releasePointer() {
+    if (!pointerPaused) return;
+    pointerPaused = false;
+    scheduleRotation();
+  }
+  window.addEventListener("pointerup", releasePointer);
+  window.addEventListener("pointercancel", releasePointer);
+  carousel.addEventListener("mouseenter", () => { hoverPaused = true; scheduleRotation(); });
+  carousel.addEventListener("mouseleave", () => { hoverPaused = false; scheduleRotation(); });
+  carousel.addEventListener("focusin", () => { focusPaused = true; scheduleRotation(); });
+  carousel.addEventListener("focusout", (event) => {
+    if (event.relatedTarget instanceof Node && carousel.contains(event.relatedTarget)) return;
+    focusPaused = false;
+    scheduleRotation();
+  });
+  document.addEventListener("visibilitychange", scheduleRotation);
+  motionPreference.addEventListener("change", () => {
+    rotationEnabled = !motionPreference.matches;
+    updateToggle();
+  });
+  new IntersectionObserver((entries) => {
+    inView = entries[0].isIntersecting;
+    scheduleRotation();
+  }, { threshold: 0.15 }).observe(carousel);
+  new ResizeObserver(rebuildLoop).observe(viewport);
+
+  carousel.classList.add("is-enhanced");
+  controls.hidden = false;
+  rebuildLoop();
+  updateToggle();
+}
